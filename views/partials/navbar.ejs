@@ -1,0 +1,25 @@
+<header class="flex justify-around p-3 bg-white">
+
+ 
+    <img class="sm:hidden" src="assets/img/logo-ml-large.png" alt="logo"/>
+    <img class="md:hidden lg:hidden xl:hidden 2xl:hidden" src="assets/img/logo-ml-small.png" alt="logo" />
+    <nav class="font-medium ">
+        <ul class="flex flex-row">
+            <a class="px-4 py-2 hover:bg-amber-200" href="/"> <li>Home</li></a>
+            <a class="px-4 py-2 hover:bg-amber-200" href="/cart"> <li>Carrito</li></a>
+        </ul>
+    </nav>  
+    <% if (isLogin) { %>
+        <form action="/logout" method="POST" class='mx-50 flex flex-row justify-around items-center bg-gray-200 shadow-2xl shadow-slate-500 w-1/5'>
+            <img width="50" src="uploads/avatars/<%= user.avatar %>" alt="imagen de avatar" />
+            <p><%=isLogin %></p>
+            <input class="bg-blue-500 py-2 px-4 text-white font-bold cursor-pointer" type="submit" value="Logout">
+        </from>
+    <% } else {%>
+        <div>
+            <a class="px-4 py-2 hover:bg-amber-200" href="/login"> Login</a>
+        </div>
+    <% } %>
+
+
+</header>

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "624b051f27c2088d28272af7",
+    "category": "celular",
+    "description": "Celular Copado",
+    "photo": "celular.png",
+    "price": 30000,
+    "title": "Samsung A31"
+  },
+  {
+    "id": "624b051f27c2088d28272af2",
+    "category": "celular",
+    "description": "Celular Copado",
+    "photo": "celular.png",
+    "price": 30000,
+    "title": "Samsung A31"
+  }
+]

@@ -1,0 +1,29 @@
+<%- include('../partials/head.ejs') %>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <% if (isLogin) { %>
+        <script type="text/javascript">
+            window.location.href = "/"
+        </script>
+    <% } else {%>
+        <form action="/login" method="POST" class="container mx-auto flex flex-col rounded-[0.5rem] mt-20 p-5 bg-gray-200 shadow-2xl shadow-slate-500 w-1/4">
+            <h1 class="font-black text-2xl py-7">Login</h1>
+            <div class="flex flex-col py-5">
+                <label >
+                    Email:
+                </label>
+                <input type="text" name="username" id="username"/>
+            </div>
+            <div class="flex flex-col py-5">
+                <label>
+                    Password:
+                </label>
+                <input type="password" name="password" id="password"/>
+
+            </div>
+            <input class="bg-blue-400 rounded-[0.3rem]  text-white font-bold px-3 mt-6 w-1/4 cursor-pointer" type="submit" value="Enviar">
+
+            <a class=" mt-20 text-blue-500" href="/register">No tengo cuenta</a>
+        </form>
+    <% } %>
+</body>

@@ -1,0 +1,17 @@
+<%- include('../partials/head.ejs') %>
+<body>
+<%- include('../partials/navbar.ejs') %>
+    <article class="mx-50 flex flex-row justify-center items-center">
+    <% productos.forEach(function(producto){ %>
+        <div id=<%= producto._id %> class='mx-50 flex flex-col m-10 items-center bg-gray-200 shadow-2xl shadow-slate-500 w-1/5'>
+            <img class="w-50 h-80" src="uploads/products/<%= producto.photo %>" alt="imagen del Producto">
+            <h3><%= producto.title %></h3>
+            <p><%= producto.description %></p>
+            <p><%= producto.price %></p>
+            <input id="addBtn" onClick="addToCart('<%= producto._id %>')" class="bg-blue-500 py-2 px-4 my-10 text-white font-bold cursor-pointer" type="button" value="Agregar al Carrito">
+        </div>
+      <% }); %>
+        
+    </article>
+<%- include('../partials/scripts.ejs') %>
+</body>

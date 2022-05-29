@@ -1,0 +1,105 @@
+<script >
+function addToCart(id) {
+
+    id = {id}
+    console.log(id)
+    const requestOptions = {
+            method: 'POST',
+            headers:{
+            'Content-Type':'application/json'
+            },
+            body: JSON.stringify(id)
+        };
+
+
+        fetch('/cart', requestOptions)
+        .then(response => response)
+        
+}
+
+
+function addQuantity(id) {
+    let defaultQuantity = parseInt(document.getElementById('spanQuantity'+id).innerText) 
+
+   let spanQuantity = document.getElementById('spanQuantity'+id)
+   let newQuantity = defaultQuantity+1
+   spanQuantity.innerHTML = newQuantity;
+
+   let prod = {_id:id,numQuantity:newQuantity}
+    const requestOptions = {
+            method: 'POST',
+            headers:{
+             'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(prod)
+        };
+
+
+        fetch('/cart/'+id, requestOptions)
+        .then(res => res.json)
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+location.reload();
+}
+
+function reduceQuantity(id) {
+    let defaultQuantity = parseInt(document.getElementById('spanQuantity'+id).innerText) 
+
+   let spanQuantity = document.getElementById('spanQuantity'+id)
+   let newQuantity = defaultQuantity-1
+   spanQuantity.innerHTML = newQuantity;
+
+   let prod = {_id:id,numQuantity:newQuantity}
+    const requestOptions = {
+            method: 'POST',
+            headers:{
+             'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(prod)
+        };
+
+
+        fetch('/cart/'+id, requestOptions)
+        .then(res => res.json)
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+location.reload();
+    }
+
+function deleteProdById(id) {
+    const requestOptions = {
+            method: 'DELETE'
+        };
+
+
+        fetch('/cart/'+id, requestOptions)
+        .then(response => console.log('Success:', response))
+        .catch(error => console.error('Error:', error))
+
+location.reload();
+}
+
+function buyProd(totalPrice) {
+
+    parseInt(totalPrice)
+
+    let finalPrice = {priceFinal: totalPrice}
+
+    console.log(finalPrice)
+
+    const requestOptions = {
+            method: 'POST',
+            headers:{
+             'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(finalPrice)
+        };
+
+
+        fetch('/cart/buy', requestOptions)
+        .then(res => res.json)
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+}
+</script>

@@ -1,0 +1,38 @@
+<%- include('../partials/head.ejs') %>
+<body>
+<%- include('../partials/navbar.ejs') %>
+    <article class="mx-50 flex flex-col justify-center items-center">
+    <%if(cart.length > 0){%>
+        <% cart.forEach(function(cart){ %>
+            <div id=<%= cart._id %> class='mx-50 flex flex-row m-10 justify-around items-center bg-gray-200 shadow-2xl shadow-slate-500 w-2/4'>
+                <img class="w-20 h-30" src="uploads/products/<%= cart.photo %>" alt="imagen del Producto">
+                <p><%= cart.description %></p>
+                <p><%= cart.price %></p>
+                <div>
+                    <input id="addBtn" onClick="reduceQuantity('<%= cart._id %>')" class="bg-blue-500 py-2 px-4 my-10 text-white font-bold cursor-pointer" type="button" value="-">
+                    <span id="spanQuantity<%= cart._id %>"><%= cart.quantity %></span>
+                    <input id="addBtn" onClick="addQuantity('<%= cart._id %>')" class="bg-blue-500 py-2 px-4 my-10 text-white font-bold cursor-pointer" type="button" value="+">
+                </div>
+                <input id="buyBtn" onClick="deleteProdById('<%= cart._id %>')" class="bg-red-500 py-2 px-4 text-white font-bold cursor-pointer rounded-full" type="button" value="X">
+
+            </div>
+        <% }); %>
+        <div class="mx-50 flex flex-row justify-around items-center w-2/4">
+            <div>Total: <%  const price = cart.map(item => item.price * item.quantity)
+                const total = price.reduce((prev, curr) => prev + curr, 0);
+                %><%= total %>      
+        
+            </div>
+            <input id="buyBtn" onClick="buyProd('<%= total %>')" class="bg-blue-500 py-2 px-4 my-10 text-white font-bold cursor-pointer" type="button" value="Comprar">
+
+        </div>
+
+      <%} else {%>
+        <div class='mx-50 flex flex-col m-10 items-center bg-gray-200 shadow-2xl shadow-slate-500 w-1/5'>
+            <p class="">Carrito Vacio.</p>
+        </div>
+        <%}%>
+    </article>
+<%- include('../partials/scripts.ejs') %>
+
+</body>

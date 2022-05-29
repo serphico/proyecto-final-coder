@@ -1,0 +1,64 @@
+<%- include('../partials/head.ejs') %>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <% if (isLogin) { %>
+        <script type="text/javascript">
+            window.location.href = "/"
+        </script>
+    <% } else {%>
+        <form action="/register" enctype="multipart/form-data" method="POST" class="container mx-auto flex flex-col rounded-[0.5rem] mt-20 p-5 bg-gray-200 shadow-2xl shadow-slate-500 w-1/4">
+            <h1 class="font-black text-2xl py-7">Registrate</h1>
+            <div class="flex flex-col py-5">
+                <label >
+                    Email:
+                </label>
+                <input class="p-2" type="email" name="username" id="username" placeholder="email@email.com" required/>
+            </div>
+            <div class="flex flex-col py-5">
+                <label>
+                    password:
+                </label>
+                <input class="p-2" type="password" name="password" id="password" required/>
+
+            </div>
+            <div class="flex flex-col py-5">
+                <label>
+                    Nombre y Apellido:
+                </label>
+                <input class="p-2" type="text" name="fullName" id="fullName" required/>
+
+            </div>
+            <div class="flex flex-col py-5">
+                <label>
+                    Dirección:
+                </label>
+                <input class="p-2" type="text" name="address" id="address" required/>
+
+            </div>
+            <div class="flex flex-col py-5">
+                <label>
+                    Edad:
+                </label>
+                <input class="p-2" type="number" name="age" id="age" pattern="[0-150]"  required/>
+
+            </div>
+            <div class="flex flex-col py-5">
+                <label>
+                    Nº de Télefono:
+                </label>
+                <input class="p-2" type="tel" name="phone" id="phone" placeholder="+543794123456" /*pattern="[\+]\d{2}[\]\d{2-3}[\]\d{3}[\-]\d{4}"*/ required/>
+                <small class="p-1">El formato del número de télefono es <strong>+54114123456</strong></small>
+            </div>
+            <div class="flex flex-col py-5">
+                <label>
+                    Avatar
+                </label>
+                <input type="file" name="avatar" id="avatar"/>
+
+            </div>
+            <input class="bg-blue-400 rounded-[0.3rem]  text-white font-bold px-3 mt-6 w-1/4 cursor-pointer" type="submit" value="Enviar"/>  
+
+            <a class=" mt-10 text-blue-500" href="/login">Ya tengo cuenta.</a>
+        </form>
+    <% } %>
+</body>
