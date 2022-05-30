@@ -1,0 +1,33 @@
+# NewProduct
+components:
+ requestBodies:
+   NewProduct:
+     type: object
+     required:
+       - title
+       - price
+       - description
+       - photo
+       - category
+     properties:
+       title:
+         type: string
+         description: Nombre del producto.
+       price:
+         type: number
+         description: Precio del producto.
+       description:
+         type: string
+         description: Descripción del producto.
+       photo:
+         type: number
+         description: Imagen del producto.
+       category:
+         type: string
+         description: Categoria del producto.         
+     example:
+        title: Samsung A31
+        price: 30000
+        description: Celular Copado
+        photo: celular.png
+        category: celulares

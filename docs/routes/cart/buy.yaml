@@ -1,0 +1,19 @@
+paths:
+ /cart/buy:
+   post:
+     summary: Se confirma la compra de los productos.
+     tags:
+       - Productos
+     requestBody:
+       required: true
+       content:
+         application/json:
+           schema:
+             $ref: '#/components/requestBodies/NewCart'
+     responses:
+       "201":
+         description: Crea un registro de persistencia de la compra.
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/NewCart'

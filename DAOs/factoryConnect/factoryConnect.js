@@ -4,10 +4,10 @@ const FileProductDao = require('../fileProductDao/fileProductDao')
 const variableEnv = require('../config')
 const logger = require('../../utils/logger')
 
-const rutaArchivoPersonas = './products.txt'
+const rutaArchivoProducts = './products.txt'
 const mongo = variableEnv.mongo_atlas
 
-const opcion = process.argv[ 2 ] || 'File'
+const opcion = process.argv[ 2 ] || 'Mongo'
 console.log(opcion)
 let dao
 switch (opcion) {
@@ -17,7 +17,7 @@ switch (opcion) {
         dao.init()
         break
     default:
-        dao = new FileProductDao(rutaArchivoPersonas)
+        dao = new FileProductDao(rutaArchivoProducts)
         dao.init()
         break
 }

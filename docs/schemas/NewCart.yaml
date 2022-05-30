@@ -1,0 +1,29 @@
+# NewCart
+components:
+ requestBodies:
+   NewCart:
+     type: object
+     required:
+       - timeStamp
+       - username
+       - productos
+       - totalPrice
+     properties:
+       timeStamp:
+         type: string
+         description: fecha de la compra.
+       username:
+         type: string
+         description: Nombre de usuario del comprador.
+       productos:
+         type: array
+         description: Array de los productos a comprar.
+       totalPrice:
+         type: number
+         description: Precio total de todo el carrito.
+     example:
+        timeStamp: 29/5/2022
+        username: fulano@gmail.com
+        productos: [{_id: "62712f8233e0fd076932d348", title: "Samsung A31", price: 30000, description: "Celular Copado", photo: "celular.png", category: "celular", quantity: 1}]
+        totalPrice: 30000
+

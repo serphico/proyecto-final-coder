@@ -9,6 +9,9 @@ const {registerRoute, loginRoute, logoutRoute, failLoginRoute,failRegisterRoute}
 const {cartRoute} = require('./routes/cartRoute')
 const path = require('path')
 
+const swaggerUi = require("swagger-ui-express");
+const {swaggerSpecs} = require("./swaggerSpecs");
+
 dotenv.config();
 
 
@@ -66,5 +69,7 @@ app.use('/logout', logoutRoute)
 app.use('/failLogin', failLoginRoute)
 
 app.use('/failRegistro', failRegisterRoute)
+
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 module.exports = app;

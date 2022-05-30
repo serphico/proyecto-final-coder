@@ -1,0 +1,16 @@
+# get all products
+paths:
+ /cart:
+   get:
+     summary: Metodo GET para obtener todos los productos.
+     tags:
+       - Productos
+     responses:
+       "200":
+         description: Todos los productos disponibles.
+         content:
+           application/json:
+             schema:
+               type: object
+               items:
+                 $ref: '#/components/schemas/Cart'

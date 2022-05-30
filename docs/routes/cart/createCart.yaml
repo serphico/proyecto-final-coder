@@ -1,0 +1,20 @@
+# create product
+paths:
+ /cart:
+   post:
+     summary: Agrega un producto al Carrito.
+     tags:
+       - Productos
+     requestBody:
+       required: true
+       content:
+         application/json:
+           schema:
+             $ref: '#/components/requestBodies/Cart'
+     responses:
+       "201":
+         description: Nuevo producto del carrito.
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/Cart'
